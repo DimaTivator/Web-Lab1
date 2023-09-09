@@ -3,14 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Lab1</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
     <div id="container">
         <div id="header">
-            <h2>Андриянов Дмитрий P3212 Вариант 2200</h2>
+            <h2>Андриянов Дмитрий Викторович, P3212, Вариант 2200</h2>
         </div>
 
+        <div class="input-container">
+            <div id="x-input" class="input-block">
+                <b>Enter X</b><br>
+                <div class="val-input">
+                    <input type="number" id="X_input_text_field" name="X_input_text_field" min="-3" max="3" step="0.1" placeholder="from -3 to 3">
+                    <label for="X_input_text_field"></label>
+                </div>
+            </div>
+
+            <div id="y-input" class="input-block">
+                <b>Choose Y</b>
+                <div id="y_checkbox">
+                    <input id="y_1" type="checkbox" value="-2">
+                    <label for="y_1">-2</label><br>
+
+                    <input id="y_2" type="checkbox" value="-1.5">
+                    <label for="y_2">-1.5</label><br>
+
+                    <input id="y_3" type="checkbox" value="-1">
+                    <label for="y_3">-1</label><br>
+
+                    <input id="y_4" type="checkbox" value="-0.5">
+                    <label for="y_4">-0.5</label><br>
+
+                    <input id="y_5" type="checkbox" value="0">
+                    <label for="y_5">0</label><br>
+
+                    <input id="y_6" type="checkbox" value="0.5">
+                    <label for="y_6">0.5</label><br>
+
+                    <input id="y_7" type="checkbox" value="1">
+                    <label for="y_7">1</label><br>
+
+                    <input id="y_8" type="checkbox" value="1.5">
+                    <label for="y_8">1.5</label><br>
+
+                    <input id="y_9" type="checkbox" value="2">
+                    <label for="y_9">2</label>
+                </div>
+            </div>
+
+            <div id="r-input" class="input-block">
+                <b>Choose R</b><br>
+                <div class="val-input">
+                    <label for="r-select"></label>
+                    <select id="r-select" name="r-input-var">
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="chart-button-container">
+                <div id="chart">
+                    <img src="./imgs/chart.png" width="250" height="250">
+                </div>
+                <div id="buttons-container">
+                    <button id="check_button" onclick="checkAndSendData()">Check</button>
+                    <button id="clear_button" onclick="removeTable()">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-mike-container">
+            <div class="table-container">
+                <table id="result-table">
+                    <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Hit</th>
+                        <th>Time</th>
+                        <th>Script running time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mike">
+                <img src="./imgs/mike.jpg" width="250" height="250">
+            </div>
+        </div>
     </div>
 </body>
 </html>
