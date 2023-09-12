@@ -22,7 +22,7 @@
 
 #y_checkbox {
     text-align: left;
-    margin-left: 10px;
+    margin-left: 3%;
 }
 
 #chart {
@@ -82,13 +82,13 @@ table {
     border: 1px solid #ccc;
 }
 
-th {
+th, td {
     border: 1px solid #ccc;
     text-align: center;
 }
 
-td {
-    border: 1px solid #ccc;
-    text-align: center;
+::selection {
+    background-color: red;
+    color: black;
 }
 

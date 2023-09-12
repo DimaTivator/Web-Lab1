@@ -41,7 +41,7 @@ function checkAndSendData() {
         input_data.append('y', selectedY[0]);
         input_data.append('r', selectedR);
 
-        const url = `../php/script.php?X=${xInput}&Y=${selectedY[0]}&R=${selectedR}`;
+        const url = `php/script.php?X=${xInput}&Y=${selectedY[0]}&R=${selectedR}`;
 
         fetch(url)
             .then(response => {
