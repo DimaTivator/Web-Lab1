@@ -38,43 +38,44 @@ function isValid($x, $y, $r): bool {
     return -3 <= $x && $x <= 3 && in_array($y, $y_values) && in_array($r, $r_values);
 }
 
-if (!isset($_SESSION['results'])) {
-    $_SESSION['results'] = array();
-}
-
 // Получаем значения X, Y и R из GET запроса
-if (isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R'])) {
+
+    $startTime = microtime(true);
 
     $x = $_GET['X'];
     $y = $_GET['Y'];
     $r = $_GET['R'];
 
-    if (!isValid($x, $y, $r)) {
-        trigger_error("Incorrect data", 400);
+    $response = '';
+
+    if (isValid($x, $y, $r)) {
+
+        $x = floatval($x);
+        $y = floatval($y);
+        $r = floatval($r);
+
+        $result = isPointInArea($x, $y, $r) ? "Yes" : "No";
+
+        $endTime = microtime(true);
+
+        $executionTime = $endTime - $startTime;
+
+        $response .= '<tr>';
+        $response .= '<td>' . $x . '</td>';
+        $response .= '<td>' . $y . '</td>';
+        $response .= '<td>' . $r . '</td>';
+        $response .= '<td>' . $result . '</td>';
+        $response .= '<td>' . date('H:i:s') . '</td>';
+        $response .= '<td>' . number_format($executionTime, 8) . '</td>';
+        $response .= '</tr>';
+
+        echo $response;
+    } else {
+        $response .= "Invalid input values";
+        header("HTTP/1.1 400 Bad Request");
+        require("bad_request.html");
     }
-
-    $x = floatval($x);
-    $y = floatval($y);
-    $r = floatval($r);
-
-    $startTime = microtime(true);
-
-    $result = isPointInArea($x, $y, $r) ? "Yes" : "No";
-
-    $endTime = microtime(true);
-
-    $executionTime = $endTime - $startTime;
-
-    $response = '<tr>';
-    $response .= '<td>' . $x . '</td>';
-    $response .= '<td>' . $y . '</td>';
-    $response .= '<td>' . $r . '</td>';
-    $response .= '<td>' . $result . '</td>';
-    $response .= '<td>' . date('H:i:s') . '</td>';
-    $response .= '<td>' . number_format($executionTime, 8) . '</td>';
-    $response .= '</tr>';
-
-
-    echo $response;
 }
+
 
